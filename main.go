@@ -1,5 +1,6 @@
 package main
 
 func main() {
-	mySlice()
+	myVariadic(1, 2)
+	myVariadic(1, 2, "a", "b", "c")
 }
