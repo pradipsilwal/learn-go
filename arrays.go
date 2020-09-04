@@ -6,7 +6,7 @@ import (
 )
 
 func arrays() {
-	numbers, err := readFile("data.txt")
+	numbers, err := getFloat("data.txt")
 	sum := 0.0
 	if err != nil {
 		log.Fatal(err)
