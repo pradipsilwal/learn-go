@@ -6,28 +6,27 @@ import (
 	"strconv"
 )
 
-func readFile(fileName string) ([3]float64, error) {
-	var numbers [3]float64
-	i := 0
+func readFile(fileName string) ([]float64, error) {
+	var numbers []float64
 	file, err := os.Open(fileName)
 	if err != nil {
-		return numbers, err
+		return nil, err
 	}
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-		numbers[i], err = strconv.ParseFloat(scanner.Text(), 64)
+		number, err := strconv.ParseFloat(scanner.Text(), 64)
 		if err != nil {
-			return numbers, err
+			return nil, err
 		}
-		i++
+		numbers = append(numbers, number)
 	}
 
 	err = file.Close()
 	if err != nil {
-		return numbers, err
+		return nil, err
 	}
 	if scanner.Err() != nil {
-		return numbers, err
+		return nil, err
 	}
 	return numbers, err
 }
