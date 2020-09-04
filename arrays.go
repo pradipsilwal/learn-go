@@ -1,14 +1,20 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+)
 
 func arrays() {
-	numbers := [3]float64{71.8, 56.2, 89.5}
-	var sum float64 = 0
+	numbers, err := readFile("data.txt")
+	sum := 0.0
+	if err != nil {
+		log.Fatal(err)
+	}
 	for _, value := range numbers {
 		sum += value
 	}
-	sampleCount := float64(len(numbers))
-	avg := sum / sampleCount
-	fmt.Printf("%.2f", avg)
+	countLength := float64(len(numbers))
+	avg := sum / countLength
+	fmt.Printf("Amount needed %.2f: ", avg)
 }
