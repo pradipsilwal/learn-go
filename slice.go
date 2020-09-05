@@ -1,13 +1,14 @@
 package main
 
 import (
+	"datafile"
 	"fmt"
 	"log"
 )
 
 func mySlice() {
 
-	numbers, err := getFloat("data.txt")
+	numbers, err := datafile.GetFloat("data.txt")
 	sum := 0.0
 	if err != nil {
 		log.Fatal(err)

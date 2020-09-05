@@ -1,6 +1,15 @@
 package main
 
+import (
+	"datafile"
+	"fmt"
+	"log"
+)
+
 func main() {
-	myVariadic(1, 2)
-	myVariadic(1, 2, "a", "b", "c")
+	votes, err := datafile.GetStrings("votes.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(votes)
 }
