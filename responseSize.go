@@ -5,10 +5,10 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"time"
 )
 
 func responseSize(url string) {
-	fmt.Println("Getting", url)
 	response, err := http.Get(url)
 	if err != nil {
 		log.Fatal(err)
@@ -18,11 +18,13 @@ func responseSize(url string) {
 	if err != nil {
 		log.Fatal(err)
 	}
+	fmt.Println("Getting", url)
 	fmt.Println(len(body))
 }
 
 func responseMain() {
-	responseSize("https://example.com")
-	responseSize("https://google.com")
-	responseSize("https://facebook.com")
+	go responseSize("https://example.com")
+	go responseSize("https://google.com")
+	go responseSize("https://facebook.com")
+	time.Sleep(5 * time.Second)
 }
