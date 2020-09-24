@@ -1,13 +1,26 @@
 package datafile
 
-import "testing"
+import (
+	"testing"
+)
 
-func TestTwoElement(t *testing.T) {
-	list := []string{"apple", "orange"}
-	want := "apple and oranges"
+func TestOneElement(t *testing.T) {
+	list := []string{"apple"}
+	want := "apple"
 	got := JoinWithCommas(list)
 	if got != want {
 		t.Errorf("JoinWithCommas(%#v) = \"%s\", want \"%s\"", list, got, want)
+		// t.Error(errorString(list, got, want))
+	}
+}
+
+func TestTwoElement(t *testing.T) {
+	list := []string{"apple", "orange"}
+	want := "apple and orange"
+	got := JoinWithCommas(list)
+	if got != want {
+		t.Errorf("JoinWithCommas(%#v) = \"%s\", want \"%s\"", list, got, want)
+		// t.Error(errorString(list, got, want))
 	}
 }
 
@@ -17,5 +30,10 @@ func TestThreeElements(t *testing.T) {
 	got := JoinWithCommas(list)
 	if got != want {
 		t.Errorf("JoinWithCommas(%#v) = \"%s\", want \"%s\"", list, got, want)
+		// t.Error(errorString(list, got, want))
 	}
 }
+
+// func errorString(list []string, got string, want string) string {
+// 	return fmt.Sprintf("JoinWithCommas(%#v) = \"%s\", want \"%s\"", list, got, want)
+// }
