@@ -1,8 +1,8 @@
 package main
 
 import (
+	"datafile"
 	"html/template"
-	"log"
 	"os"
 )
 
@@ -11,27 +11,21 @@ type Part struct {
 	Count int
 }
 
-func check(err error) {
-	if err != nil {
-		log.Fatal(err)
-	}
-}
-
 func templateAction1() {
 	templateText := "Template Start \nAction: {{.}}\nTemplate end\n"
 	tmpl, err := template.New("test").Parse(templateText)
-	check(err)
+	datafile.Check(err)
 	err = tmpl.Execute(os.Stdout, "ABC")
-	check(err)
+	datafile.Check(err)
 	err = tmpl.Execute(os.Stdout, 42)
-	check(err)
+	datafile.Check(err)
 	err = tmpl.Execute(os.Stdout, true)
-	check(err)
+	datafile.Check(err)
 }
 
 func executeTemplate(text string, data interface{}) {
 	tmpl, err := template.New("test").Parse(text)
-	check(err)
+	datafile.Check(err)
 	err = tmpl.Execute(os.Stdout, data)
 }
 

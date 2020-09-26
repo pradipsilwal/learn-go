@@ -1,20 +1,15 @@
 package main
 
 import (
+	"datafile"
 	"log"
 	"net/http"
 )
 
-func check(err error) {
-	if err != nil {
-		log.Fatal(err)
-	}
-}
-
 func viewHandler(writer http.ResponseWriter, request *http.Request) {
 	placeholder := []byte("Signature list goes here.")
 	_, err := writer.Write(placeholder)
-	check(err)
+	datafile.Check(err)
 }
 
 func webMore() {

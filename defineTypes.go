@@ -5,20 +5,20 @@ import (
 	"reflect"
 )
 
-type liters float64
-type gallons float64
+type litersVar float64
+type gallonsVar float64
 
-func toGallons(l liters) gallons {
-	return gallons(l * 0.264)
+func toGallons(l litersVar) gallonsVar {
+	return gallonsVar(l * 0.264)
 }
 
-func toLiters(g gallons) liters {
-	return liters(g * 3.785)
+func toLiters(g gallonsVar) litersVar {
+	return litersVar(g * 3.785)
 }
 
 func definedTypes() {
-	var carFuel liters
-	var busFuel gallons
+	var carFuel litersVar
+	var busFuel gallonsVar
 	carFuel = 34.5
 	busFuel = 66.3
 	fmt.Println("Car Fuel: ", carFuel)
